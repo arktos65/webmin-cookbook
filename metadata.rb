@@ -1,8 +1,11 @@
 name             'webmin'
-maintainer       'YOUR_NAME'
-maintainer_email 'YOUR_EMAIL'
-license          'All rights reserved'
-description      'Installs/Configures webmin'
-long_description 'Installs/Configures webmin'
+maintainer       'Pulselocker, Inc.'
+maintainer_email 'sean@pulselocker.com'
+license          'Apache 2.0'
+description      'Installs/Configures webmin application.'
+long_description 'Installs/Configures webmin application.'
 version          '0.1.0'
+
+depends 'build-essential'
+depends 'apt'
 

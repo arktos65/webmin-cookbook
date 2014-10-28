@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: webmin
-# Recipe:: default
+# Recipe:: debian
 #
 # Copyright 2014, Pulselocker, Inc.
 #
@@ -18,9 +18,14 @@
 #
 
 ###
-# Default recipe that installs platform specific packages or source
+# Recipe to install on Debian platforms
 ###
+include_recipe 'apt::default'
+include_recipe 'build-essential'
 
-if node['platform_family'] == 'debian'
-  include_recipe "webmin::debian"
+# Download the Debian package
+remote_file "#{Chef::Config[:file_cache_path]}/webmin-#{node['webmin']['version']}_all.deb" do
+  source "#{node['webmin']['download_url']}/webmin-#{node['webmin']['version']}_all.deb"
+  checksum node['webmin']['checksum']['debian_package']
+  action :create_if_missing
 end
