@@ -14,70 +14,13 @@ Attributes
 ----------
 
 #### webmin::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['webmin']['version']</tt></td>
-    <td>String</td>
-    <td>Version number to download and install.</td>
-    <td><tt>3.3.3</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['pgpool2']['prefix_dir']</tt></td>
-    <td>String</td>
-    <td>The directory where you want to install the binaries.</td>
-    <td><tt>/usr/local</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['pgpool2']['log_dir']</tt></td>
-    <td>String</td>
-    <td>Directory for log files.</td>
-    <td><tt>/var/log/postgresql</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['pgpool2']['use_ssl']</tt></td>
-    <td>Boolean</td>
-    <td>Set to true if you want to compile OpenSSL support.  Requires OpenSSL to be already installed.</td>
-    <td><tt>false</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['pgpool2']['memcache_path']</tt></td>
-    <td>String</td>
-    <td>Path to memcache if using this feature.</td>
-    <td><tt>nil</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['pgpool2']['user']</tt></td>
-    <td>String</td>
-    <td>Service account user.</td>
-    <td><tt>postgres</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['pgpool2']['pg_home']</tt></td>
-    <td>String</td>
-    <td>Base directory of PostgreSQL data directory.</td>
-    <td><tt>/var/lib/postgresql/9.1</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['pgpool2']['pg_arch']</tt></td>
-    <td>String</td>
-    <td>Directory path to PostgreSQL archive directory.</td>
-    <td><tt>/var/lib/postgresql/9.1/archive</tt></td>
-  </tr>
-</table>
 
-#### pgpool2::configure
-The attributes in the configure.rb file are used to generate the pgpool.conf file.  The keys are listed under:
-['pgpool']['config'].  Override the attributes in your Chef artifact to generate the desired configuration.  It 
-may be helpful to review the comments in the attributes/configure.rb file and the pgpool-II documentation.
-
-Values that are defined as true or false will translate to 'on' or 'off' in the configuration file.  If you do not
-wish to include a particular key in the configuration, set it's value to nil.
+* `node[webmin][version]` - Version of Webmin to install.
+* `node['webmin']['checksum']['debian_package']` - Debian package checksum.
+* `node['webmin']['checksum']['rpm_package']` - Redhat package checksum.
+* `node['webmin']['checksum']['source']` - Source archive checksum.
+* `node['webmin']['install_from']` - Installation method: package or source.
+* `node['webmin']['download_url']` - Download URL of Webmin packages.
 
 Usage
 -----
