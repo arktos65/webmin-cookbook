@@ -24,4 +24,4 @@ default['webmin']['checksum']['source'] = 'cf270b18644884b1c791ba963d9a630d'
 
 # Install from either: source or package
 default['webmin']['install_from'] = 'package'
-default['webmin']['download_url'] = 'http://prdownloads.sourceforge.net/webadmin/'
+default['webmin']['download_url'] = 'http://prdownloads.sourceforge.net/webadmin'

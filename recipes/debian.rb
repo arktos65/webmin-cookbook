@@ -23,9 +23,31 @@
 include_recipe 'apt::default'
 include_recipe 'build-essential'
 
+# Install prerequisite packages
+apt_package "apt-show-versions" do
+  action :install
+end
+apt_package "libapt-pkg-perl" do
+  action :install
+end
+apt_package "libauthen-pam-perl" do
+  action :install
+end
+apt_package "libio-pty-perl" do
+  action :install
+end
+apt_package "libnet-ssleay-perl" do
+  action :install
+end
+
 # Download the Debian package
-remote_file "#{Chef::Config[:file_cache_path]}/webmin-#{node['webmin']['version']}_all.deb" do
-  source "#{node['webmin']['download_url']}/webmin-#{node['webmin']['version']}_all.deb"
+remote_file "#{Chef::Config[:file_cache_path]}/webmin_#{node['webmin']['version']}_all.deb" do
+  source "#{node['webmin']['download_url']}/webmin_#{node['webmin']['version']}_all.deb"
   checksum node['webmin']['checksum']['debian_package']
   action :create_if_missing
+end
+
+# Install the package
+dpkg_package "#{Chef::Config[:file_cache_path]}/webmin_#{node['webmin']['version']}_all.deb" do
+  action :install
 end
