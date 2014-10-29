@@ -17,10 +17,11 @@
 # limitations under the License.
 #
 
-###
-# Default recipe that installs platform specific packages or source
-###
+default['webmin']['version'] = '1.710'
+default['webmin']['checksum']['debian_package'] = 'c6957d2fee9028a63ff4e31adfe1e9bc'
+default['webmin']['checksum']['rpm_package'] = '8146819ba1c55b20be9ec277ac6a1e9a'
+default['webmin']['checksum']['source'] = 'cf270b18644884b1c791ba963d9a630d'
 
-if node['platform_family'] == 'debian'
-  include_recipe "webmin::debian"
-end
+# Install from either: source or package
+default['webmin']['install_from'] = 'package'
+default['webmin']['download_url'] = 'http://prdownloads.sourceforge.net/webadmin'

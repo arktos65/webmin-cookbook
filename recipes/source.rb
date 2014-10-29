@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: webmin
-# Recipe:: default
+# Recipe:: source
 #
 # Copyright 2014, Pulselocker, Inc.
 #
@@ -16,11 +16,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-###
-# Default recipe that installs platform specific packages or source
-###
-
-if node['platform_family'] == 'debian'
-  include_recipe "webmin::debian"
-end

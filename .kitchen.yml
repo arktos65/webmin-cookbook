@@ -7,9 +7,19 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
+  - name: ubuntu-14.04
   - name: centos-6.4
 
 suites:
   - name: default
-    run_list:
+    run_list: recipe[webmin::default]
+    attributes:
+  - name: debian
+    run_list: recipe[webmin::debian]
+    attributes:
+  - name: redhat
+    run_list: recipe[webmin::redhat]
+    attributes:
+  - name: source
+    run_list: recipe[webmin::source]
     attributes:
